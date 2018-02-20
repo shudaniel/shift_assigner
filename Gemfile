@@ -59,5 +59,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Calendar documentation at: https://github.com/bokmann/fullcalendar-rails
+# https://fullcalendar.io/
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
