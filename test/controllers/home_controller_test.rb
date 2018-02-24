@@ -10,8 +10,4 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   	assert :success
   end
 
-  test "home index should be root" do 
-  	skip
-  	assert_routing root_url, controller: 'home', action: 'index'
-  end
 end
