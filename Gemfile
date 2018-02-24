@@ -60,5 +60,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Calendar documentation at: https://github.com/bokmann/fullcalendar-rails
 # https://fullcalendar.io/
+# ice_cube to make events on calendar into recurring events
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'ice_cube'

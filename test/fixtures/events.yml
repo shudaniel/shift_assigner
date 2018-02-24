@@ -5,9 +5,11 @@ one:
   description: MyText
   start_time: 2018-02-19 16:55:01
   end_time: 2018-02-19 16:55:01
+  calendar: one
 
 two:
   title: MyString
   description: MyText
   start_time: 2018-02-19 16:55:01
   end_time: 2018-02-19 16:55:01
+  calendar: two
