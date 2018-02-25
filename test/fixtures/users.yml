@@ -2,8 +2,10 @@
 
 one:
   name: MyString
+  email: emailOne@email.com
   calendar_id: 1
 
 two:
   name: MyString
+  email: emaoTwo@email.com
   calendar_id: 1

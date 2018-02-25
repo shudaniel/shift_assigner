@@ -64,3 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'ice_cube'
+
+# bcrypt for password security
+gem 'bcrypt', '3.1.11'
