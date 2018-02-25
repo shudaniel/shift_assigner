@@ -43,4 +43,5 @@ ActiveRecord::Schema.define(version: 20180224072758) do
   end
 
   add_foreign_key "calendars", "users"
+  add_foreign_key "events", "calendars"
 end
