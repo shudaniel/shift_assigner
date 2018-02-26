@@ -3,6 +3,7 @@ require 'test_helper'
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
+    @calendar = calendars(:one)
   end
 
   test "should get index" do
@@ -16,7 +17,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create event" do
-    assert_difference('Event.count') do
+    assert_difference('Event.count', 1) do
       post events_url, params: { event: { description: @event.description, end_time: @event.end_time, start_time: @event.start_time, title: @event.title } }
     end
 

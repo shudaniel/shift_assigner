@@ -41,12 +41,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise', '~> 4.4.0'
 
 
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -63,5 +65,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Calendar documentation at: https://github.com/bokmann/fullcalendar-rails
 # https://fullcalendar.io/
+# ice_cube to make events on calendar into recurring events
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'ice_cube'
+
+# bcrypt for password security
+gem 'bcrypt', '3.1.11'
