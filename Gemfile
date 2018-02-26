@@ -37,9 +37,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# User Devise for sessions and login/logout
+# Use Devise for sessions and login/logout
 gem 'devise', '~> 4.4.0'
-
+# Use cancancan and rolify to set permissions
+gem 'cancancan'
+gem 'rolify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
