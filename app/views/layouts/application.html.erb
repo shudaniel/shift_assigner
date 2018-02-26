@@ -8,10 +8,20 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%= render 'layouts/navbar_form' %>
+  <% if user_signed_in? %>
+    <%= render 'layouts/navbar_form' %>
+  <% else %>
+    <%= render 'layouts/navbar_signin' %>
+  <% end %>
 
   <div class="container">
   	<body>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
     	<%= yield %>
   	</body>
   </div>
