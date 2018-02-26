@@ -6,7 +6,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    skip
     get users_url
     assert_response :success
   end
@@ -18,14 +17,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { calendar_id: @user.calendar_id, name: @user.name } }
+      post users_url, params: { user: { name: @user.name, email: "email@email.com", password: "password", password_confirmation: "password" } }
     end
 
     assert_redirected_to user_url(User.last)
   end
 
   test "should show user" do
-    skip
     get user_url(@user)
     assert_response :success
   end
@@ -36,7 +34,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { calendar_id: @user.calendar_id, name: @user.name} }
+    patch user_url(@user), params: { user: { name: @user.name, email: "email@email.com", password: "password", password_confirmation: "password" } }
     assert_redirected_to user_url(@user)
   end
 
