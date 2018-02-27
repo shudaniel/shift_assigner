@@ -1,10 +1,10 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
+<%= form_with(model: shift, local: true) do |form| %>
+  <% if shift.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(shift.errors.count, "error") %> prohibited this shift from being saved:</h2>
 
       <ul>
-      <% event.errors.full_messages.each do |message| %>
+      <% shift.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -17,22 +17,22 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :event_title %>
+    <%= form.text_field :title, id: :shift_title %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :event_description %>
+    <%= form.text_area :description, id: :shift_description %>
   </div>
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, ampm: true, id: :event_start_time %>
+    <%= form.datetime_select :start_time, ampm: true, id: :shift_start_time %>
   </div>
 
   <div class="field">
     <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, ampm: true, id: :event_end_time %>
+    <%= form.datetime_select :end_time, ampm: true, id: :shift_end_time %>
   </div>
 
   <div class="actions">
