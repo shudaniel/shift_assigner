@@ -1,14 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @calendar.name %>
-</p>
+<h1><%= @calendar.name %> Events</h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @calendar.user %>
-</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-2">Title</div>
+      <div class="col-xs-3">Description</div>
+      <div class="col-xs-2">Start Time</div>
+      <div class="col-xs-2">End Time</div>
+      <div class="col-xs-3"></div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <% @calendar.events.each do |event| %>
+      <div class="row">
+        <div class="col-xs-2"><%= event.title %></div>
+        <div class="col-xs-3"><%= event.description %></div>
+        <div class="col-xs-2"><%= Event.format_datetime(event.start_time) %></div>
+        <div class="col-xs-2"><%= Event.format_datetime(event.end_time) %></div>
+        <div class="col-xs-1"><%= link_to 'Show', event %></div>
+        <div class="col-xs-1"><%= link_to 'Edit', edit_event_path(event) %></div>
+        <div class="col-xs-1"><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to 'New Event', new_event_path(calendar_id: @calendar.id) %> |
+
 
 <%= link_to 'Edit', edit_calendar_path(@calendar) %> |
 <%= link_to 'Back', calendars_path %>

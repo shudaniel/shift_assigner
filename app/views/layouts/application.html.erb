@@ -9,7 +9,7 @@
   </head>
 
   <% if user_signed_in? %>
-    <%= render 'layouts/navbar_form' %>
+    <%= render 'layouts/navbar' %>
   <% else %>
     <%= render 'layouts/navbar_signin' %>
   <% end %>
@@ -23,6 +23,7 @@
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
     	<%= yield %>
+      <%= debug(params) if Rails.env.development? %>
   	</body>
   </div>
 </html>

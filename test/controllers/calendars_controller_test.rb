@@ -15,6 +15,10 @@ class CalendarsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "calendars should only belongr to users that own them" do
+    assert_equal @user.calendars.count, 1
+  end 
+
   test "should get new" do
     get new_calendar_url
     assert_response :success
@@ -49,5 +53,15 @@ class CalendarsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to calendars_url
+  end
+
+  test "calendar should belong to user after created" do
+    assert_difference('@user.calendars.count', 1) do
+      post calendars_url, params: { calendar: { name: @calendar.name } }
+    end
+  end
+
+  test "should not own other user's calendars" do
+    assert_not_equal @user.calendars, Calendar.all
   end
 end

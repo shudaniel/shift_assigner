@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= hidden_field_tag :calendar_id, params[:calendar_id] %>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :event_title %>
   </div>
