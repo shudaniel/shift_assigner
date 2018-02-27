@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @calendar.name %> Events</h1>
+<h1><%= @calendar.name %> Shifts</h1>
 
 
 <div class="panel panel-default">
@@ -14,15 +14,15 @@
     </div>
   </div>
   <div class="panel-body">
-    <% @calendar.events.each do |event| %>
+    <% @calendar.shifts.each do |shift| %>
       <div class="row">
-        <div class="col-xs-2"><%= event.title %></div>
-        <div class="col-xs-3"><%= event.description %></div>
-        <div class="col-xs-2"><%= Event.format_datetime(event.start_time) %></div>
-        <div class="col-xs-2"><%= Event.format_datetime(event.end_time) %></div>
-        <div class="col-xs-1"><%= link_to 'Show', event %></div>
-        <div class="col-xs-1"><%= link_to 'Edit', edit_event_path(event) %></div>
-        <div class="col-xs-1"><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <div class="col-xs-2"><%= shift.title %></div>
+        <div class="col-xs-3"><%= shift.description %></div>
+        <div class="col-xs-2"><%= Shift.format_datetime(shift.start_time) %></div>
+        <div class="col-xs-2"><%= Shift.format_datetime(shift.end_time) %></div>
+        <div class="col-xs-1"><%= link_to 'Show', shift %></div>
+        <div class="col-xs-1"><%= link_to 'Edit', edit_shift_path(shift) %></div>
+        <div class="col-xs-1"><%= link_to 'Delete', shift, method: :delete, data: { confirm: 'Are you sure?' } %></div>
       </div>
     <% end %>
   </div>
@@ -31,7 +31,7 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path(calendar_id: @calendar.id) %> |
+<%= link_to 'New Shift', new_shift_path(calendar_id: @calendar.id) %> |
 
 
 <%= link_to 'Edit', edit_calendar_path(@calendar) %> |
