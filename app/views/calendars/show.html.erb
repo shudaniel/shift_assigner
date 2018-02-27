@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
+<h1><%= @calendar.name %> Events</h1>
 
 
 <div class="panel panel-default">
@@ -15,7 +14,7 @@
     </div>
   </div>
   <div class="panel-body">
-    <% @events.each do |event| %>
+    <% @calendar.events.each do |event| %>
       <div class="row">
         <div class="col-xs-2"><%= event.title %></div>
         <div class="col-xs-3"><%= event.description %></div>
@@ -32,4 +31,8 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path(calendar_id: @calendar.id) %> |
+
+
+<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
+<%= link_to 'Back', calendars_path %>

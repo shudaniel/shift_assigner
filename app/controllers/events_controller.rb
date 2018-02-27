@@ -1,11 +1,8 @@
 class EventsController < ApplicationController
+  before_action :load_parent, only: [:create]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events
-  # GET /events.json
-  def index
-    @events = Event.all
-  end
+  load_and_authorize_resource
 
   # GET /events/1
   # GET /events/1.json
@@ -24,11 +21,11 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = @parent.events.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to (@event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -54,9 +51,10 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    parent = @event.calendar
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
+      format.html { redirect_to parent, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +63,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def load_parent
+      @parent = Calendar.find(params[:calendar_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
