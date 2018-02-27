@@ -1,8 +1,12 @@
 class ShiftsController < ApplicationController
-  before_action :load_parent, only: [:create]
+  before_action :load_parent, only: [:create, :index]
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
+
+  def index
+    @shifts = @parent.shifts
+  end
 
   # GET /shifts/1
   # GET /shifts/1.json

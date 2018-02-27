@@ -1,1 +1,1 @@
-json.partial! "shifts/shift", shift: @shift
+json.partial! "shifts/shift", shift: @shift, 
