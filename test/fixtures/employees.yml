@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Bob
   email: MyString@email.com
   employee_num: 1
   calendar: one
 
 two:
-  name: MyString
+  name: Robert
   email: MyString2@email.com
   employee_num: 1
   calendar: two

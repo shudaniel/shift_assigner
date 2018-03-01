@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: Shift1
   description: MyText
   start_time: 2018-02-19 16:55:01
   end_time: 2018-02-19 16:55:01
+  max_employees: 2
   calendar: one
 
 two:
-  title: MyString
+  title: Shift2
   description: MyText
   start_time: 2018-02-19 16:55:01
   end_time: 2018-02-19 16:55:01
+  max_employees: 1
   calendar: two
