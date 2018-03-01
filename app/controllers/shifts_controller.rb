@@ -26,7 +26,7 @@ class ShiftsController < ApplicationController
   # POST /shifts.json
   def create
     @shift = @parent.shifts.new(shift_params)
-
+    @shift.set_shift_description
     respond_to do |format|
       if @shift.save
         format.html { redirect_to (@shift), notice: 'Shift was successfully created.' }
@@ -41,6 +41,7 @@ class ShiftsController < ApplicationController
   # PATCH/PUT /shifts/1
   # PATCH/PUT /shifts/1.json
   def update
+    @shift.set_shift_description
     respond_to do |format|
       if @shift.update(shift_params)
         format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
@@ -75,6 +76,6 @@ class ShiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shift_params
-      params.require(:shift).permit(:title, :description, :start_time, :end_time)
+      params.require(:shift).permit(:title, :description, :start_time, :end_time, :max_employees, :assigned_to => [])
     end
 end

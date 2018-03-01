@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @shift.description %>
-</p>
-
-<p>
   <strong>Start time:</strong>
   <%= Shift.format_datetime(@shift.start_time) %>
 </p>
@@ -18,6 +13,11 @@
 <p>
   <strong>End time:</strong>
   <%= Shift.format_datetime(@shift.end_time) %>
+</p>
+
+<p>
+  <strong>Max Employees:</strong>
+  <%= @shift.max_employees %>
 </p>
 
 <%= link_to 'Edit', edit_shift_path(@shift) %> |
