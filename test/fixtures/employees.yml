@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  email: MyString
+  email: MyString@email.com
   employee_num: 1
   calendar: one
 
 two:
   name: MyString
-  email: MyString
+  email: MyString2@email.com
   employee_num: 1
   calendar: two

@@ -22,10 +22,17 @@ class EmployeesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create employee" do
     assert_difference('Employee.count') do
-      post employees_url, params: { calendar_id: @employee.calendar.id, employee: { calendar_id: @employee.calendar_id, email: @employee.email, employee_num: @employee.employee_num, name: @employee.name } }
+      post employees_url, params: { calendar_id: @employee.calendar.id, employee: { calendar_id: @employee.calendar_id, email: "email@email.com", employee_num: @employee.employee_num, name: @employee.name } }
     end
 
     assert_redirected_to employee_url(Employee.last)
+  end
+
+  test "should not create employees if they have the same email" do
+    assert_difference('Employee.count', 0) do
+      post employees_url, params: { calendar_id: @employee.calendar.id, employee: { calendar_id: @employee.calendar_id, email: @employee.email, employee_num: @employee.employee_num, name: @employee.name } }
+    end
+
   end
 
   test "should show employee" do
