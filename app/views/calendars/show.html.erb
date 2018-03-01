@@ -23,6 +23,12 @@
 
 <h1><%= @calendar.name %> Shifts</h1>
 
+<div class="btn group">
+  <%= link_to 'New Shift', new_shift_path(calendar_id: @calendar.id), :class => "btn btn-primary" %> 
+  <%= link_to 'Employees', employees_path(calendar_id: @calendar.id), :class => "btn btn-outline-secondary" %> |
+  <%= link_to 'Change Calendar Name', edit_calendar_path(@calendar), :class => "btn btn-outline-secondary" %> |
+  <%= link_to 'Back', calendars_path, :class => "btn btn-outline-secondary" %>
+</div>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -51,10 +57,6 @@
 
 
 <br>
-
-<%= link_to 'New Shift', new_shift_path(calendar_id: @calendar.id) %> |
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
-<%= link_to 'Back', calendars_path %>
 
 <br>
 

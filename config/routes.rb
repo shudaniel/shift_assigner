@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :employees
   resources :calendars
   devise_for :users
   resources :shifts

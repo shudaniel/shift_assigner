@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180227050252) do
+ActiveRecord::Schema.define(version: 20180228234747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20180227050252) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_calendars_on_user_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.integer "employee_num"
+    t.bigint "calendar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_id"], name: "index_employees_on_calendar_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -70,5 +80,6 @@ ActiveRecord::Schema.define(version: 20180227050252) do
   end
 
   add_foreign_key "calendars", "users"
+  add_foreign_key "employees", "calendars"
   add_foreign_key "shifts", "calendars"
 end
