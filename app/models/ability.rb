@@ -31,9 +31,13 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
+    elsif user.has_role? :manager
+      can :manage, :all
+      cannot :manage, User
+      #For future, set permissions so one user cannot look at another's calendars, shifts, or employees
     else
-      can :read, :all
-      can :manage, Calendar
+      can :read, Calendar
+      can :read, Shift
     end
 
   end
