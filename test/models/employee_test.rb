@@ -10,7 +10,6 @@ class EmployeeTest < ActiveSupport::TestCase
   
   test "email addresses should be unique" do
     duplicate_employee = @employee.dup
-    @employee.save
     assert_not duplicate_employee.valid?
   end
 
