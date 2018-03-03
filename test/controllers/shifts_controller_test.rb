@@ -18,10 +18,17 @@ class ShiftsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shift" do
     assert_difference('Shift.count') do
-      post shifts_url, params: { calendar_id: @calendar.id, shift: { description: @shift.description, end_time: @shift.end_time, start_time: @shift.start_time, title: @shift.title } }
+      post shifts_url, params: { calendar_id: @calendar.id, shift: { description: @shift.description, end_time: @shift.end_time, start_time: @shift.start_time, title: @shift.title, max_employees: 3 } }
     end
 
     assert_redirected_to shift_url(Shift.last)
+  end
+
+  test "should not allow a negative max employees" do
+    assert_difference('Shift.count', 0) do
+      post shifts_url, params: { calendar_id: @calendar.id, shift: { description: @shift.description, end_time: @shift.end_time, start_time: @shift.start_time, title: @shift.title, max_employees: -8 } }
+    end
+
   end
 
   test "should show shift" do
@@ -47,4 +54,6 @@ class ShiftsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to calendar_url(@calendar)
   end
+
+  
 end

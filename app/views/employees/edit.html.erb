@@ -2,5 +2,5 @@
 
 <%= render 'form', employee: @employee %>
 
-<%= link_to 'Show', @employee %> |
-<%= link_to 'Back', employees_path(calendar_id: @employee.calendar.id) %>
+<%= link_to 'Show', @employee, :class => "btn btn-outline-secondary"  %> |
+<%= link_to 'Back', employees_path(calendar_id: @employee.calendar.id), :class => "btn btn-outline-secondary"  %>

@@ -15,3 +15,12 @@ two:
   end_time: 2018-02-19 16:55:01
   max_employees: 1
   calendar: two
+
+three:
+  title: Shift3
+  description: MyText
+  start_time: 2018-02-19 16:55:01
+  end_time: 2018-02-19 02:55:01
+  max_employees: 1
+  weekdays: [0,4,5]
+  calendar: two

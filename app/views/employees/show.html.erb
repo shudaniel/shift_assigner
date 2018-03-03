@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path(calendar_id: @employee.calendar.id) %>
+<%= link_to 'Edit', edit_employee_path(@employee), :class => "btn btn-outline-secondary"  %> |
+<%= link_to 'Back', employees_path(calendar_id: @employee.calendar.id, :class => "btn btn-outline-secondary" ) %>
