@@ -1,7 +1,4 @@
-<link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-<script src='lib/jquery.min.js'></script>
-<script src='lib/moment.min.js'></script>
-<script src='fullcalendar/fullcalendar.js'></script>
+
 
 <script>
 
@@ -13,6 +10,8 @@
       // put your options and callbacks here
       defaultView: "agendaWeek",
       events: "/shifts.json?calendar_id=<%=@calendar.id%>",
+      timeFormat: 'h:mm a',
+      height: "auto",
     });
 
   });
@@ -34,8 +33,9 @@
   <div class="panel-heading">
     <div class="row">
       <div class="col-xs-3">Title</div>
-      <div class="col-xs-3">Start Time</div>
-      <div class="col-xs-3">End Time</div>
+      <div class="col-xs-4">Days of Week</div>
+      <div class="col-xs-1">Start Time</div>
+      <div class="col-xs-1">End Time</div>
       <div class="col-xs-3"></div>
     </div>
   </div>
@@ -43,8 +43,9 @@
     <% @calendar.shifts.each do |shift| %>
       <div class="row">
         <div class="col-xs-3"><%= shift.title %></div>
-        <div class="col-xs-3"><%= Shift.format_datetime(shift.start_time) %></div>
-        <div class="col-xs-3"><%= Shift.format_datetime(shift.end_time) %></div>
+        <div class="col-xs-4"><%= shift.get_weekdays_as_string %></div>
+        <div class="col-xs-1"><%= Shift.format_time_ampm(shift.start_time) %></div>
+        <div class="col-xs-1"><%= Shift.format_time_ampm(shift.end_time) %></div>
         <div class="col-xs-1"><%= link_to 'Show', shift %></div>
         <div class="col-xs-1"><%= link_to 'Edit', edit_shift_path(shift) %></div>
         <div class="col-xs-1"><%= link_to 'Delete', shift, method: :delete, data: { confirm: 'Are you sure?' } %></div>

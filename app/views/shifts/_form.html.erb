@@ -15,19 +15,32 @@
     <%= hidden_field_tag :calendar_id, params[:calendar_id] %>
   </div>
 
+
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :shift_title %>
   </div>
 
+  <div class="checkboxes">
+    <ul>
+      <li><%= check_box_tag "sunday", 0, shift.weekdays.include?(0) %> Sunday</li>
+      <li><%= check_box_tag "monday", 1, shift.weekdays.include?(1) %> Monday</li>
+      <li><%= check_box_tag "tuesday", 2, shift.weekdays.include?(2) %> Tuesday</li>
+      <li><%= check_box_tag "wednesday", 3, shift.weekdays.include?(3) %> Wednesday</li>
+      <li><%= check_box_tag "thursday", 4, shift.weekdays.include?(4) %> Thursday</li>
+      <li><%= check_box_tag "friday", 5, shift.weekdays.include?(5) %> Friday</li>
+      <li><%= check_box_tag "saturday", 6, shift.weekdays.include?(6) %> Saturday</li>
+    </ul>
+  </div>
+
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, ampm: true, id: :shift_start_time %>
+    <%= form.time_select :start_time, ampm: true, id: :shift_start_time %>
   </div>
 
   <div class="field">
     <%= form.label :end_time %>
-    <%= form.datetime_select :end_time, ampm: true, id: :shift_end_time %>
+    <%= form.time_select :end_time, ampm: true, id: :shift_end_time %>
   </div>
 
   <div class="field">

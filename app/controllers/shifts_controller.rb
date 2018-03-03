@@ -27,6 +27,7 @@ class ShiftsController < ApplicationController
   def create
     @shift = @parent.shifts.new(shift_params)
     @shift.set_shift_description
+    @shift.set_day_of_week(params)
     respond_to do |format|
       if @shift.save
         format.html { redirect_to (@shift), notice: 'Shift was successfully created.' }
@@ -42,6 +43,8 @@ class ShiftsController < ApplicationController
   # PATCH/PUT /shifts/1.json
   def update
     @shift.set_shift_description
+    @shift.set_day_of_week(params)
+
     respond_to do |format|
       if @shift.update(shift_params)
         format.html { redirect_to @shift, notice: 'Shift was successfully updated.' }
