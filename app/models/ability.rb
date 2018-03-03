@@ -6,7 +6,7 @@ class Ability
     #
     #   user ||= User.new # guest user (not logged in)
     #   if user.admin?
-    #     can :manage, :all
+    #     can [:manage], :all
     #   else
     #     can :read, :all
     #   end
@@ -28,17 +28,20 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    can :read, [Calendar, Shift]
 
-    if user.has_role? :admin
-      can :manage, :all
-    elsif user.has_role? :manager
-      can :manage, :all
-      cannot :manage, User
-      #For future, set permissions so one user cannot look at another's calendars, shifts, or employees
-    else
-      can :read, Calendar
-      can :read, Shift
+    if user.present?
+      if user.has_role? :admin
+        can :manage, :all
+      else
+        can [:create], Calendar
+        can [:update, :destroy], Calendar, user_id: user.id
+        can [:create], Shift
+        can [:update, :destroy], Shift, user_id: user.id
+        can [:create], Employee
+        can [:update, :destroy, :read], Employee, user_id: user.id
+
+      end
     end
-
   end
 end
