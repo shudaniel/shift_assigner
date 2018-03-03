@@ -14,6 +14,6 @@ class User < ApplicationRecord
       self.add_role(:admin)
     end
 
-    self.add_role(:manager) if self.roles.blank?
+    self.add_role(:user) if self.roles.blank?
   end
 end

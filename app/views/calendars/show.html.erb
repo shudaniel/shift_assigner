@@ -8,6 +8,11 @@
 
     $('#calendar').fullCalendar({
       // put your options and callbacks here
+      header: {
+                left: 'today',
+                center: 'title',
+                right: 'agendaWeek,agendaDay prev,next '
+            },
       defaultView: "agendaWeek",
       events: "/shifts.json?calendar_id=<%=@calendar.id%>",
       timeFormat: 'h:mm a',
