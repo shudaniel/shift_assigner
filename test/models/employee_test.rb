@@ -13,6 +13,13 @@ class EmployeeTest < ActiveSupport::TestCase
     assert_not duplicate_employee.valid?
   end
 
+  test "emails should not have to be unique outside scope of a calendar" do
+    duplicate_employee = @employee.dup
+    duplicate_employee.calendar_id = calendars(:two).id
+
+    assert duplicate_employee.valid?
+  end
+
   test "email addresses should be saved as lower-case" do
     mixed_case_email = "Foo@ExAMPle.CoM"
     @employee.email = mixed_case_email
