@@ -37,9 +37,9 @@ class Ability
         can [:create], Calendar
         can [:update, :destroy], Calendar, user_id: user.id
         can [:create], Shift
-        can [:update, :destroy], Shift, user_id: user.id
+        can [:update, :destroy], Shift 
         can [:create], Employee
-        can [:update, :destroy, :read], Employee, user_id: user.id
+        can [:update, :destroy, :read], Employee
 
       end
     end
