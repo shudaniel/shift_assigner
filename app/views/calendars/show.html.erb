@@ -29,6 +29,7 @@
 
 <div class="btn group">
   <%= link_to 'New Shift', new_shift_path(calendar_id: @calendar.id), :class => "btn btn-primary" %> 
+  <%= link_to 'Preference Form', calendar_preferences_path(@calendar), :class => "btn btn-primary" %> 
   <%= link_to 'Employees', employees_path(calendar_id: @calendar.id), :class => "btn btn-outline-secondary" %> |
   <%= link_to 'Change Calendar Name', edit_calendar_path(@calendar), :class => "btn btn-outline-secondary" %> |
   <%= link_to 'Back', calendars_path, :class => "btn btn-outline-secondary" %>
