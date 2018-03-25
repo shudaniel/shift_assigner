@@ -43,10 +43,10 @@ class Shift < ApplicationRecord
 
   def get_weekdays_as_string
 
-    days_of_week = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri"]
+    days_of_week = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
     weekday_string = ""
-    self.weekdays.each do |index|
-      weekday_string += days_of_week[index] + ", "
+    self.weekdays.each do |i|
+      weekday_string += days_of_week[i] + ", "
     end
 
     if weekday_string.empty?

@@ -66,6 +66,12 @@ class CalendarsController < ApplicationController
 
   def preferences
     @calendar = current_user.calendars.find(params[:calendar_id])
+    @shifts = @calendar.shifts.all
+    if request.post?
+      redirect_to @calendar
+    else
+
+    end
   end
 
   private

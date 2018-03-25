@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :calendars do
     get :preferences
+    post :preferences
   end
   devise_for :users
   resources :shifts

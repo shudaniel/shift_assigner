@@ -1,1 +1,83 @@
-<%= link_to 'Back to Calendar', calendar_path(@calendar), :class => "btn btn-outline-secondary" %>
+<script>
+
+  $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+      // put your options and callbacks here
+      header: {
+                left: 'today',
+                center: 'title',
+                right: 'agendaWeek prev,next '
+            },
+      defaultView: "agendaWeek",
+      events: "/shifts.json?calendar_id=<%=@calendar.id%>",
+      timeFormat: 'h:mm a',
+      height: "auto",
+      eventClick: function(event) {
+              if (event.url) {
+                  return false;
+              }
+          },
+    });
+
+  });
+
+</script>
+<div class="row">
+  <h1>Select Your Shift Preferences</h1>
+</div>
+
+<div class="col-lg-4">
+  <%= link_to 'Back to Calendar', calendar_path(@calendar), :class => "btn btn-primary" %>
+
+  <%= form_with url: calendar_preferences_path, method: "post" do |form| %>
+
+    <div class="field">
+      <%= form.label "Employee Num" %>
+      <%= form.number_field :employee_num, id: :employee_employee_num %>
+    </div>
+
+    <div class="field">
+      <%= form.label "Full Name" %>
+      <%= form.text_field :name, id: :employee_name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email, id: :employee_email %>
+    </div>
+
+    <div class="field">
+      <%= form.label "Preferred Number of Shifts" %>
+      <%= form.number_field :num_shifts, id: :employee_num_shifts %>
+    </div>
+
+    <h3>Shifts</h3>
+    <p>Please select all shifts you are willing to work</p>
+    <div class="container">
+      <% @shifts.each do |shift| %>
+        <h4><%= shift.title %> <%= Shift.format_time_ampm(shift.start_time) %> - <%= Shift.format_time_ampm(shift.end_time) %></h4>
+        <div class="checkboxes">
+          <ul>
+            <% (0..6).each do |i|%>
+              <% if shift.weekdays.include?(i) %>
+                <li><%= check_box_tag "shift_#{shift.id}_#{weekdays_int_to_string[i]}", 0 %> <%= weekdays_int_to_string[i] %> </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+</div>
+
+<div class="col-lg-8">
+  <div id="calendar" />
+</div>
