@@ -64,7 +64,7 @@
           <ul>
             <% (0..6).each do |i|%>
               <% if shift.weekdays.include?(i) %>
-                <li><%= check_box_tag "shift_#{shift.id}_#{weekdays_int_to_string[i]}", 0 %> <%= weekdays_int_to_string[i] %> </li>
+                <li><%= check_box_tag "shift_#{shift.id}_#{weekdays_int_to_string[i]}", shift.id %> <%= weekdays_int_to_string[i] %> </li>
               <% end %>
             <% end %>
           </ul>

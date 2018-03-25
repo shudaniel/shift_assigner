@@ -68,6 +68,7 @@ class CalendarsController < ApplicationController
     @calendar = current_user.calendars.find(params[:calendar_id])
     @shifts = @calendar.shifts.all
     if request.post?
+      @calendar.set_employee_preferences(params)
       redirect_to @calendar
     else
 
