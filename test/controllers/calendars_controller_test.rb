@@ -29,6 +29,11 @@ class CalendarsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should generate calendar schedule" do
+    post calendar_generate_path(@calendar)
+    assert_redirected_to @calendar
+  end
+
   test "should create calendar" do
     assert_difference('Calendar.count') do
       post calendars_url, params: { calendar: { name: @calendar.name } }

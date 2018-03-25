@@ -74,6 +74,12 @@ class CalendarsController < ApplicationController
     end
   end
 
+  def generate
+    @calendar = current_user.calendars.find(params[:calendar_id])
+
+    redirect_to @calendar
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_calendar
