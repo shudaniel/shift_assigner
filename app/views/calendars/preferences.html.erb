@@ -55,7 +55,8 @@
     </div>
 
     <h3>Shifts</h3>
-    <p>Please select all shifts you are willing to work</p>
+    <p>Please select all shifts you are willing to work.</p>
+    <p>Note: For overnight or multi-day shifts, the day of the week listed is the day that the shift STARTS on.</p>
     <div class="container">
       <% @shifts.each do |shift| %>
         <h4><%= shift.title %> <%= Shift.format_time_ampm(shift.start_time) %> - <%= Shift.format_time_ampm(shift.end_time) %></h4>
