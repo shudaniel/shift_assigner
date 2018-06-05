@@ -67,3 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # https://fullcalendar.io/
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+
+gem 'loofah', '>= 2.2.1'
+gem 'rails-html-sanitizer', '>=1.0.4'
